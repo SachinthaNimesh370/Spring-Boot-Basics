@@ -12,14 +12,21 @@ import org.springframework.web.bind.annotation.RestController;
 public class TestController {
 
     @GetMapping("/get-text-method-01")
-    public String getMyTest(){
+    public String getMyTest1(){
         String myText ="get-text-method-01";
         System.out.println(myText);
         return myText;
     }
 
     @GetMapping("/get-text-method-02")
-    public String getMyTest1(){
+    public String getMyTest2(){
+        String myText ="get-text-method-02";
+        System.out.println(myText);
+        return myText;
+    }
+
+    @GetMapping("/get-text-method-03")
+    public String getMyTest3(){
         String myText ="get-text-method-02";
         System.out.println(myText);
         return myText;
