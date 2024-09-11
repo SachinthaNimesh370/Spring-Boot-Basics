@@ -11,9 +11,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("api/v1/test")
 public class TestController {
 
-    @GetMapping
-    public void getMyTest(){
-        String myText ="abs";
+    @GetMapping("/get-text-method-01")
+    public String getMyTest(){
+        String myText ="get-text-method-01";
         System.out.println(myText);
+        return myText;
+    }
+
+    @GetMapping("/get-text-method-02")
+    public String getMyTest1(){
+        String myText ="get-text-method-02";
+        System.out.println(myText);
+        return myText;
     }
 }
