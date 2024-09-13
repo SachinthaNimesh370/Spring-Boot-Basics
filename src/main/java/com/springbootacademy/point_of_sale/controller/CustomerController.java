@@ -45,7 +45,6 @@ public class CustomerController {
     @GetMapping(path ="/get-all-data")
     public List<CustomerDTO> getAllCustomer(){
         List<CustomerDTO> allCustomers = customerService.getAllCustomers();
-
         return allCustomers;
     }
 
