@@ -7,6 +7,8 @@ import com.springbootacademy.point_of_sale.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("api/v1/customer")
 @CrossOrigin
@@ -37,6 +39,13 @@ public class CustomerController {
         CustomerDTO customerDTO=customerService.getCustomer(customerId);
         return customerDTO;
 
+    }
+
+//    gGet All Data
+    @GetMapping(path ="/get-all-data")
+    public List<CustomerDTO> getAllCustomer(){
+        List<CustomerDTO> allCustomers = customerService.getAllCustomers();
+        return allCustomers;
     }
 
 
