@@ -18,7 +18,7 @@ public class CustomerController {
     @PostMapping("/save")
     public String SaveCustomer(@RequestBody CustomerDTO customerDTO){
         customerService.saveCustomer(customerDTO);
-        return "Save";
+         return "Save";
 
     }
 
@@ -26,6 +26,16 @@ public class CustomerController {
     public String updateCustomer(@RequestBody CustomerUpdateDTO customerUpdateDTO){
         String massage= customerService.updateCustomer(customerUpdateDTO);
         return massage;
+
+    }
+
+    @GetMapping(
+            path="/get",
+            params="id"
+    )
+    public CustomerDTO getCustomer(@RequestParam(value = "id") int customerId){
+        CustomerDTO customerDTO=customerService.getCustomer(customerId);
+        return customerDTO;
 
     }
 
