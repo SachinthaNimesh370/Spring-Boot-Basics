@@ -10,4 +10,6 @@ public interface CustomerService {
 
 
     String updateCustomer(CustomerUpdateDTO customerUpdateDTO);
+
+    CustomerDTO getCustomer(int customerId);
 }
