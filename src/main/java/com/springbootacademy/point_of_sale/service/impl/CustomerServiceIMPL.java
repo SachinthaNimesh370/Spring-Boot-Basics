@@ -8,6 +8,8 @@ import com.springbootacademy.point_of_sale.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CustomerServiceIMPL implements CustomerService {
 
@@ -71,6 +73,11 @@ public class CustomerServiceIMPL implements CustomerService {
         }else{
             throw new RuntimeException("No Customer Found");
         }
+    }
+
+    @Override
+    public List<CustomerDTO> getAllCustomers() {
+        return null;
     }
 
 
