@@ -19,4 +19,7 @@ public interface CustomerService {
 
 
     String deleteCustomer(int customerId);
+
+    List<CustomerDTO> getAllActiveCustomers(boolean customerActiveStatus);
+
 }
