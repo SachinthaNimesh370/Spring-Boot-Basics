@@ -1,10 +1,12 @@
 package com.springbootacademy.point_of_sale.dto.responce;
 
-import com.springbootacademy.point_of_sale.entity.enums.MeasuringUnitType;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
 
 public class ItemGetResponceDTO {
     private int itemId;
