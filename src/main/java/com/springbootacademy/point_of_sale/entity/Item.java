@@ -1,12 +1,18 @@
 package com.springbootacademy.point_of_sale.entity;
 
 import com.springbootacademy.point_of_sale.entity.enums.MeasuringUnitType;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.lang.reflect.Type;
 
 @Entity
 @Table(name = "item")
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
 public class Item {
 
     @Id
