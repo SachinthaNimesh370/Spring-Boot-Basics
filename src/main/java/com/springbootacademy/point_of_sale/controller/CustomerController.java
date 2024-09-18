@@ -4,7 +4,10 @@ package com.springbootacademy.point_of_sale.controller;
 import com.springbootacademy.point_of_sale.dto.CustomerDTO;
 import com.springbootacademy.point_of_sale.dto.updatedto.CustomerUpdateDTO;
 import com.springbootacademy.point_of_sale.service.CustomerService;
+import com.springbootacademy.point_of_sale.util.StandardResponce;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -35,9 +38,18 @@ public class CustomerController {
             path="/get",
             params="id"
     )
-    public CustomerDTO getCustomer(@RequestParam(value = "id") int customerId){
+//    public CustomerDTO getCustomer(@RequestParam(value = "id") int customerId){
+//        CustomerDTO customerDTO=customerService.getCustomer(customerId);
+//        return customerDTO;
+//
+//    }
+    public ResponseEntity<StandardResponce> getCustomer(@RequestParam(value = "id") int customerId){
         CustomerDTO customerDTO=customerService.getCustomer(customerId);
-        return customerDTO;
+        ResponseEntity<StandardResponce> response=
+                new ResponseEntity<StandardResponce>(
+                new StandardResponce(201,"Save",customerDTO)
+                ,HttpStatus.CREATED);
+        return response;
 
     }
 

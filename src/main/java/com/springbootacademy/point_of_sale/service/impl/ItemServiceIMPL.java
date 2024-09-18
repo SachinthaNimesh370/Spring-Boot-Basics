@@ -39,8 +39,8 @@ public class ItemServiceIMPL implements ItemService {
     @Override
     public List<ItemGetResponceDTO> getItem(String itemName) {
 
-        List<Item> items = itemRepo.findAllByItemNameEqualsAndActiveStateEquals(itemName,true);
-        if(items.size()>0){
+        List<Item> items = itemRepo.findAllByItemNameEqualsAndActiveStateEquals(itemName,false);
+        if(!items.isEmpty()){
             List<ItemGetResponceDTO> itemGetResponceDTO = modelMapper.map(items,new TypeToken<List<ItemGetResponceDTO>>(){}.getType());
 
             return itemGetResponceDTO;
