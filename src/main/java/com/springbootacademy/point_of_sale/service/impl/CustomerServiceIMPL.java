@@ -3,6 +3,7 @@ package com.springbootacademy.point_of_sale.service.impl;
 import com.springbootacademy.point_of_sale.dto.CustomerDTO;
 import com.springbootacademy.point_of_sale.dto.updatedto.CustomerUpdateDTO;
 import com.springbootacademy.point_of_sale.entity.Customer;
+import com.springbootacademy.point_of_sale.exception.NotFoundExeption;
 import com.springbootacademy.point_of_sale.repo.CustomerRepo;
 import com.springbootacademy.point_of_sale.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,9 +46,6 @@ public class CustomerServiceIMPL implements CustomerService {
             customer.setContactnumber(customerUpdateDTO.getContactnumber());
 
             customerRepo.save(customer);
-
-
-
         }
         else{
             throw new RuntimeException("No Data Found");
@@ -80,24 +78,28 @@ public class CustomerServiceIMPL implements CustomerService {
     public List<CustomerDTO> getAllCustomers() {
 
         List<Customer> getAllCustomer = customerRepo.findAll();
+        if(getAllCustomer.size()>0){
+            List<CustomerDTO> customerDTOList =   new ArrayList<>();
+            for(Customer customer:getAllCustomer){
+                CustomerDTO customerDTO= new CustomerDTO(
+                        customer.getCustomerId(),
+                        customer.getCustomerName(),
+                        customer.getCustomerAddress(),
+                        customer.getSalary(),
+                        customer.getContactnumber(),
+                        customer.getNic(),
+                        customer.isActive()
+                );
+                customerDTOList.add(customerDTO);
+            }
+            return customerDTOList;
+        }
+        else{
+            throw new NotFoundExeption("Not Found Exeption");
 
-        List<CustomerDTO> customerDTOList =   new ArrayList<>();
+        }
 
-         for(Customer customer:getAllCustomer){
-             CustomerDTO customerDTO= new CustomerDTO(
-                     customer.getCustomerId(),
-                     customer.getCustomerName(),
-                     customer.getCustomerAddress(),
-                     customer.getSalary(),
-                     customer.getContactnumber(),
-                     customer.getNic(),
-                     customer.isActive()
 
-             );
-             customerDTOList.add(customerDTO);
-
-         }
-        return customerDTOList;
     }
 
     @Override
